@@ -6,7 +6,9 @@ import AuthForm from "../reusables/AuthForm";
 const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, isError } = useSelector((state) => state.auth);
+  const { isLoading, isError, errorMessage } = useSelector(
+    (state) => state.auth
+  );
 
   const onSubmit = async (data) => {
     const resultAction = await dispatch(signupUser(data));
@@ -32,7 +34,7 @@ const Signup = () => {
         action={onSubmit}
         isLoading={isLoading}
         isError={isError}
-        errorMessage="User already exists! Please Login."
+        errorMessage={errorMessage.message}
       />
     </div>
   );

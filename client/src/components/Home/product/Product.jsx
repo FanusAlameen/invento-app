@@ -258,9 +258,9 @@ const Product = () => {
               <select
                 className="select select-bordered select-sm w-full max-w-xs font-mont"
                 {...register("saleable")}
-                defaultValue={currentProduct?.saleable}
+                defaultValue={currentProduct?.saleable || ""}
               >
-                <option disabled selected>
+                <option disabled value="">
                   Select Yes / No
                 </option>
                 <option className="font-mont">Yes</option>

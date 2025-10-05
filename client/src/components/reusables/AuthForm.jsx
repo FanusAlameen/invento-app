@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { FaUser, FaKey, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
+//import { DevTool } from "@hookform/devtools";
 import { Link } from "react-router-dom";
 import invento from "../../../public/images/invento-logo.png";
 
@@ -18,7 +18,7 @@ const AuthForm = ({
   errorMessage,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const { register, control, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
 
   return (
     <form

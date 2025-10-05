@@ -77,6 +77,8 @@ const Purchase = () => {
     dispatch(purchasePost(formattedData))
       .then(() => setIsSuccess(true))
       .catch(() => setIsSuccess(false));
+
+    console.log("Purchase payload:", formattedData);
   };
 
   return (

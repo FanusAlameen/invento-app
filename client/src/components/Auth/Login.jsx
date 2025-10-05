@@ -6,7 +6,9 @@ import AuthForm from "../reusables/AuthForm";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, isError } = useSelector((state) => state.auth);
+  const { isLoading, isError, errorMessage } = useSelector(
+    (state) => state.auth
+  );
 
   const onLogin = async (data) => {
     const resultAction = await dispatch(loginUser(data));
@@ -32,7 +34,7 @@ const Login = () => {
         action={onLogin}
         isLoading={isLoading}
         isError={isError}
-        errorMessage="Incorrect username or password!"
+        errorMessage={errorMessage.message}
       />
     </div>
   );

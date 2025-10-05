@@ -5,7 +5,14 @@ import { FaPlus } from "react-icons/fa";
 import { DevTool } from "@hookform/devtools";
 
 const DynamicForm = ({ mode, suppliers, clients, products, action }) => {
-  const { control, handleSubmit, setValue, watch } = useForm({});
+  const { control, handleSubmit, setValue, watch, reset } = useForm({
+    defaultValues: {
+      name: "",
+      supplier_id: "",
+      address: "",
+      products: [],
+    },
+  });
 
   const { fields, append, remove } = useFieldArray({
     control,

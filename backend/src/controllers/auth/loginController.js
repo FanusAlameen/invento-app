@@ -13,9 +13,7 @@ const login = async (req, res) => {
     [username],
     async (error, results) => {
       if (error || results.length === 0) {
-        return res
-          .status(401)
-          .json({ message: "Invalid username or password" });
+        return res.status(401).json({ message: "User does not exist!" });
       }
 
       const user = results[0];
@@ -23,9 +21,7 @@ const login = async (req, res) => {
       //check if password is correct
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        return res
-          .status(401)
-          .json({ message: "Invalid username or password" });
+        return res.status(401).json({ message: "Incorrect Password!" });
       }
 
       //Generate JWT Token
@@ -35,13 +31,11 @@ const login = async (req, res) => {
         { expiresIn: "1h" }
       );
 
-      res
-        .status(200)
-        .json({
-          auth: true,
-          token: token,
-          message: "Successfully authenticated the token",
-        });
+      res.status(200).json({
+        auth: true,
+        token: token,
+        message: "Successfully authenticated the token",
+      });
     }
   );
 };
